@@ -43,26 +43,20 @@ public class OrdersControllerTestMocks extends AbstractControllerTest{
 	    @Test
 	    public void testfindAllOrders() throws Exception {
 
-	        // Create some test data
 	        List<OrdersDTO> list = getEntityListStubData();
 
-	        // Stub the GreetingService.findAll method return value
 	        when(service.findAllOrders()).thenReturn(list);
 
-	        // Perform the behavior being tested
 	        String uri = "/order/";
 
 	        MvcResult result = mvc.perform(MockMvcRequestBuilders.get(uri)
 	                .accept(MediaType.APPLICATION_JSON)).andReturn();
 
-	        // Extract the response status and body
 	        String content = result.getResponse().getContentAsString();
 	        int status = result.getResponse().getStatus();
 
-	        // Verify the GreetingService.findAll method was invoked once
 	        verify(service, times(1)).findAllOrders();
 
-	        // Perform standard JUnit assertions on the response
 	        Assert.assertEquals("failure - expected HTTP status 200", 200, status);
 	        Assert.assertTrue(
 	                "failure - expected HTTP response body to have a value",
@@ -111,13 +105,10 @@ public class OrdersControllerTestMocks extends AbstractControllerTest{
 	    @Test
 	    public void testCreateOrders() throws Exception {
 
-	        // Create some test data
 	    	OrdersDTO entity = getEntityStubData();
 
-	        // Stub the GreetingService.create method return value
 	        when(service.create(any(OrdersDTO.class))).thenReturn(entity);
 
-	        // Perform the behavior being tested
 	        String uri = "/order/";
 	        String inputJson = super.mapToJson(entity);
 
@@ -127,14 +118,11 @@ public class OrdersControllerTestMocks extends AbstractControllerTest{
 	                        .accept(MediaType.APPLICATION_JSON).content(inputJson))
 	                .andReturn();
 
-	        // Extract the response status and body
 	        String content = result.getResponse().getContentAsString();
 	        int status = result.getResponse().getStatus();
 
-	        // Verify the GreetingService.create method was invoked once
 	        verify(service, times(1)).create(any(OrdersDTO.class));
 
-	        // Perform standard JUnit assertions on the test results
 	        Assert.assertEquals("failure - expected HTTP status 201", 201, status);
 	        Assert.assertTrue(
 	                "failure - expected HTTP response body to have a value",

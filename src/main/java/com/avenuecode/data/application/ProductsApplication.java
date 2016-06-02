@@ -37,7 +37,7 @@ public class ProductsApplication {
     }
 
     @CacheEvict(
-            value = "greetings",
+            value = "products",
             allEntries = true)
     public void evictCache() {
         //logger.info("> evictCache");

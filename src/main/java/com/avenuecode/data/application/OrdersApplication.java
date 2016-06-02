@@ -123,7 +123,7 @@ public class OrdersApplication {
     }
 
     @CacheEvict(
-            value = "greetings",
+            value = "order",
             allEntries = true)
     public void evictCache() {
         //logger.info("> evictCache");

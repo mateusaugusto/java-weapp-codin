@@ -41,26 +41,20 @@ public class ProductsControllerMocksTest extends AbstractControllerTest {
     @Test
     public void testfindAllProducts() throws Exception {
 
-        // Create some test data
         List<Products> list = getEntityListStubData();
 
-        // Stub the GreetingService.findAll method return value
         when(service.findAllProducts()).thenReturn(list);
 
-        // Perform the behavior being tested
         String uri = "/products/";
 
         MvcResult result = mvc.perform(MockMvcRequestBuilders.get(uri)
                 .accept(MediaType.APPLICATION_JSON)).andReturn();
 
-        // Extract the response status and body
         String content = result.getResponse().getContentAsString();
         int status = result.getResponse().getStatus();
 
-        // Verify the GreetingService.findAll method was invoked once
         verify(service, times(1)).findAllProducts();
 
-        // Perform standard JUnit assertions on the response
         Assert.assertEquals("failure - expected HTTP status 200", 200, status);
         Assert.assertTrue(
                 "failure - expected HTTP response body to have a value",
@@ -92,7 +86,7 @@ public class ProductsControllerMocksTest extends AbstractControllerTest {
 
         Long id = Long.MAX_VALUE;
         when(service.findProductById(id)).thenReturn(null);
-        String uri = "/api/greetings/{id}";
+        String uri = "/products/{id}";
 
         MvcResult result = mvc.perform(MockMvcRequestBuilders.get(uri, id)
                 .accept(MediaType.APPLICATION_JSON)).andReturn();

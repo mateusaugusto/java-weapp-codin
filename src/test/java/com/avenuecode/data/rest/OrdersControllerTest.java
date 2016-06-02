@@ -104,11 +104,11 @@ public class OrdersControllerTest extends AbstractControllerTest{
 
 	        OrdersDTO createdOrder = super.mapFromJson(content, OrdersDTO.class);
 
-	        Assert.assertNotNull("failure - expected greeting not null",
+	        Assert.assertNotNull("failure - expected order not null",
 	        		createdOrder);
-	        Assert.assertNotNull("failure - expected greeting.id not null",
+	        Assert.assertNotNull("failure - expected order.id not null",
 	        		createdOrder.getOrder());
-	        Assert.assertEquals("failure - expected greeting.text match", "test",
+	        Assert.assertEquals("failure - expected oredr match", "test",
 	        		createdOrder.getProducts());
 	    }
 	    
